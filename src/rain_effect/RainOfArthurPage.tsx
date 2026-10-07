@@ -1992,53 +1992,11 @@ export default function RainOfArthurPage({ children, onAnalyserReady }: RainOfAr
         </>
       )}
 
-      {/* 1.5 Audio & Music Controls (Top Left, always visible) */}
-      <div className="absolute top-6 left-6 z-40 flex items-center gap-4 pointer-events-auto">
-        <button
-          onClick={toggleSound}
-          className="p-2 transition-transform hover:scale-110 active:scale-95"
-          title={isAudioEnabled ? "Mute Rain Sound" : "Play Rain Sound"}
-        >
-          {isAudioEnabled ? (
-            <Volume2 className="w-6 h-6 text-white drop-shadow-md" />
-          ) : (
-            <VolumeX className="w-6 h-6 text-white/50 drop-shadow-md" />
-          )}
-        </button>
-        <button
-          onClick={() => setIsMusicEnabled(!isMusicEnabled)}
-          className="p-2 transition-transform hover:scale-110 active:scale-95"
-          title={isMusicEnabled ? "Mute Background Music" : "Play Background Music"}
-        >
-          <Music className={`w-6 h-6 drop-shadow-md ${isMusicEnabled ? 'text-white' : 'text-white/50'}`} />
-        </button>
-      </div>
-
-      {/* Insert children (landing page content) if present */}
+      {/* Insert children if present */}
       {children && (
         <div className="absolute inset-0 z-10 pointer-events-auto overflow-y-auto overflow-x-hidden w-full h-full flex flex-col">
           {children}
         </div>
-      )}
-
-      {/* 2. Glassmorphic header control bar */}
-      {developerMode && (
-        <header className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-black/80 to-transparent flex items-center justify-end px-6 z-20 pointer-events-none">
-          {/* System metrics tags */}
-          <div className="flex items-center gap-4 text-xs font-mono text-zinc-300 pointer-events-auto bg-black/40 backdrop-blur-md border border-white/5 rounded-full px-4 py-1.5 shadow-lg">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-zinc-400">FPS:</span>
-              <span className="font-bold text-white">{calculatedFps}</span>
-            </div>
-            <div className="h-3 w-[1px] bg-white/10" />
-            <div className="flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="text-zinc-400">Drops:</span>
-              <span className="font-bold text-white">{activeRaindropsCount}</span>
-            </div>
-          </div>
-        </header>
       )}
 
       {/* Loading Overlay */}
